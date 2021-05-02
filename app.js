@@ -26,5 +26,5 @@ app.use("/", (req, res, next) => {
 });
 
 
-const portListening = 3000;
+const portListening = process.env.PORT || 3000;
 app.listen(portListening, () => console.log("Listening on: ", portListening));
