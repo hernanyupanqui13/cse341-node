@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("./includes/header.ejs") %> 
+
+<body>
+    <h1>Book's Information</h1>
+    <div class="wrapper">
+        <form action="/bookinfo" method="POST" class="record_book-form ">
+            <label for="bookname-ipt">Enter the Book: </label>
+            <input type="text" id="bookname-ipt" name="book_title">
+            <label for="summary">Enter the summary: </label>
+            <textarea id="summary" name="book_summary"></textarea>
+
+            <div class="form-options">
+                <button type="submit" class="form-btn main-btn">Submit</button>
+                <a href="/bookinfo/all" class="form-btn secondary-btn">See all Summaries</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

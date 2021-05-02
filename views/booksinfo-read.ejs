@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("./includes/header.ejs") %> 
+
+<body>
+    <h1>Book's Information</h1>
+    <ul>
+        <% for(let item of booksinfo) {%> 
+        <li class="bookinfo-item">
+            <strong class="bookinfo-title"><%= item.book_title %> </strong>
+            <p class="bookinfo-summary"><%= item.book_summary %> </p>
+        </li>
+        <% } %> 
+    </ul>
+</body>
+</html>
