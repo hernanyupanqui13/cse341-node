@@ -3,7 +3,10 @@
 <%- include("./includes/header.ejs") %> 
 
 <body>
-    <h1>Book's Information</h1>
+    <header class="read-header">
+        <h1>Book's Information</h1>
+        <a href="/bookinfo" class="form-btn return-btn">&lt;&lt; Return</a>
+    </header>
     <ul>
         <% for(let item of booksinfo) {%> 
         <li class="bookinfo-item">
@@ -13,4 +16,4 @@
         <% } %> 
     </ul>
 </body>
-</html>
+</html> 
