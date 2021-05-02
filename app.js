@@ -18,7 +18,6 @@ app.use(readRoute);
 
 
 app.use("/", (req, res, next) => {
-    console.log(req.url);
     res.status(404);
     res.render("404", {
         title: "404 Page not found"

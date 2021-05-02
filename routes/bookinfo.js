@@ -8,8 +8,6 @@ router.get("/bookinfo", (req, res, next) => {
 });
 
 router.post("/bookinfo", (req, res, next) => {
-    console.log("recibing ino-");
-    console.log(JSON.stringify(req.body));
     
     fs.readFile("./database.json", "utf-8", (error, data) => {
         const the_data = JSON.parse(data);
