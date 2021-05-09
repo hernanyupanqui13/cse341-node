@@ -8,7 +8,7 @@ routes
     .use("/bookinfo", booksInfo)
 
     .get("/", (req, res, next) => {
-        //res.render()
+        res.render("home", {title: "Web Site - Home "})
         console.log("1 aqui")
     })
 

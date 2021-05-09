@@ -165,3 +165,20 @@ body {
 .read-header h1 {
     margin: 3px;
 }
+
+
+a {
+    text-decoration: none;
+}
+
+.home-links {
+    background-color: #2B9EB3;
+    padding: 10px 20px;
+    border-radius: 5px;
+
+}
+
+.home-links a {
+    display: block;
+    color: black;
+}
