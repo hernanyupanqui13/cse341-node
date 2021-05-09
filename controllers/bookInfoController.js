@@ -12,3 +12,19 @@ exports.addNewBook = (req, res, next) => {
     });
     
 }
+
+exports.showAllBooks = (req, res, next) => {
+    let all_data;
+
+    Book.getAllBooksInfo((all_data) => {
+        res.render("booksinfo-read", {
+            title: "All info",
+            booksinfo: all_data
+        });
+    });
+
+}
+
+exports.getAddNewBook = (req, res, next) => {
+    res.render("bookinfo-write", {title: "Record Books information"});
+}

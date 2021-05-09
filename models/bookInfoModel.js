@@ -15,12 +15,6 @@ const getData = (cb) => {
             cb(JSON.parse(data));
         }
 
-        const the_data = JSON.parse(data);
-        the_data.push(req.body);
-        
-        fs.writeFile("./data/bookinfo.json", JSON.stringify(the_data), (err) => {
-            console.log(err);
-        }); 
     });
 }
 
@@ -31,6 +25,7 @@ module.exports = class Book {
     }
 
     save(cb) {
+        
         getData( (data) => {
             data.push(this)
             fs.writeFile(dataPath, JSON.stringify(data), (err) => {

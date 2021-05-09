@@ -1,7 +1,7 @@
 const routes = require("express").Router();
 
 // Inner Routes
-const booksInfo = require("./bookinfo")
+const booksInfo = require("./bookinfo/bookinfo");
 
 
 routes
