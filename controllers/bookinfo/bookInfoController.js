@@ -1,4 +1,4 @@
-const Book = require("../models/bookInfoModel");
+const Book = require("../../models/bookInfoModel");
 
 exports.addNewBook = (req, res, next) => {
     const book = new Book(req.body.book_title, req.body.book_summary);
@@ -14,6 +14,7 @@ exports.addNewBook = (req, res, next) => {
 }
 
 exports.showAllBooks = (req, res, next) => {
+    
     let all_data;
 
     Book.getAllBooksInfo((all_data) => {
