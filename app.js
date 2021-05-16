@@ -3,13 +3,12 @@ const bodyParser = require("body-parser");
 const path = require("path");
 const portListening = process.env.PORT || 3000;
 
-const mongoConnect = require("./util/database");
+
 const mongoose = require("mongoose");
 
 const app = express();
 
 const routes = require("./routes/index");
-//const readRoute = require("./routes/bookinfo");
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.set("view engine", "ejs");
@@ -38,7 +37,7 @@ mongoose
         user.save();
       }
     });*/
-    app.listen(3000);
+    app.listen(portListening);
   })
   .catch(err => {
     console.log(err);
