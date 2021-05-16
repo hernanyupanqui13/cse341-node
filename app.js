@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const path = require("path");
 const portListening = process.env.PORT || 3000;
 
+const errorController = require('./controllers/error');
 
 const mongoose = require("mongoose");
 
@@ -17,6 +18,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 
 app.use("/", routes);
+app.use(errorController.get404);
 
 
 
@@ -37,7 +39,7 @@ mongoose
         user.save();
       }
     });*/
-    app.listen(portListening);
+    app.listen(portListening, () => console.log("Starting on port: ", portListening));
   })
   .catch(err => {
     console.log(err);
