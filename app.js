@@ -3,6 +3,8 @@ const bodyParser = require("body-parser");
 const path = require("path");
 const portListening = process.env.PORT || 3000;
 
+const mongoConnect = require("./util/database");
+const mongoose = require("mongoose");
 
 const app = express();
 
@@ -18,4 +20,30 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use("/", routes);
 
 
-app.listen(portListening, () => console.log("Listening on: ", portListening));
+
+mongoose
+  .connect(
+    `mongodb+srv://webClient:yupanqui@cluster0.u5wqk.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`
+  )
+  .then( () => {
+    /*User.findOne().then(user => {
+      if (!user) {
+        const user = new User({
+          name: 'Max',
+          email: 'max@test.com',
+          cart: {
+            items: []
+          }
+        });
+        user.save();
+      }
+    });*/
+    app.listen(5000);
+  })
+  .catch(err => {
+    console.log(err);
+  });
+
+
+
+
