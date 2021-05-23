@@ -1,22 +1,53 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
-
-const errorController = require('./controllers/error');
-
 const mongoose = require("mongoose");
+const session = require("express-session");
+const MongoDBStore = require("connect-mongodb-session") (session);
+const csrf = require("csurf");
+const flash = require("connect-flash");
 
-const app = express();
+
 
 const routes = require("./routes/index");
 
-app.use(express.static(path.join(__dirname, 'public')));
+
+const portListening = process.env.PORT || 5000;
+const MONGODB_URL = process.env.MONGODB_URL || "mongodb+srv://webClient:yupanqui@cluster0.u5wqk.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+
+const errorController = require('./controllers/error');
+
+
+const app = express();
+const store = new MongoDBStore({
+  uri: MONGODB_URL,
+  collection: "sessions"
+});
+
+const csrfProtection = csrf();
+
 app.set("view engine", "ejs");
 app.set("views", "views");
+
+
+
 app.use(bodyParser.urlencoded({extended: false}));
+app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(
+  session({
+    secret:"my secret", 
+    resave: false, 
+    saveUninitialized:false,
+    store:store
+  })
+);
 
+app.use(csrfProtection);
+app.use(flash());
 app.use("/", routes);
+
+
 app.use(errorController.get404);
 
 
@@ -36,10 +67,6 @@ const options = {
     family: 4
 };
 
-const MONGODB_URL = process.env.MONGODB_URL || "mongodb+srv://webClient:yupanqui@cse341cluster-3dwlw.mongodb.net/test?retryWrites=true&w=majority";
-                        
-
-
 
 
 mongoose
@@ -47,20 +74,6 @@ mongoose
     MONGODB_URL, options
   )
   .then( () => {
-    /*User.findOne().then(user => {
-      if (!user) {
-        const user = new User({
-          name: 'Max',
-          email: 'max@test.com',
-          cart: {
-            items: []
-          }
-        });
-        user.save();
-      }
-    });*/
-    const portListening = process.env.PORT || 3000;
-
     app.listen(portListening, () => console.log("Starting on port: ", portListening));
   })
   .catch(err => {

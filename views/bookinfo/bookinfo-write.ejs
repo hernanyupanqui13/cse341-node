@@ -12,6 +12,7 @@
             <textarea id="summary" name="book_summary"></textarea>
 
             <div class="form-options">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                 <button type="submit" class="form-btn main-btn">Submit</button>
                 <a href="/bookinfo/all" class="form-btn secondary-btn">See all Summaries</a>
             </div>

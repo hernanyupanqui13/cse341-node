@@ -28,7 +28,6 @@ exports.getProduct = (req, res, next) => {
 };
 
 exports.getIndex = (req, res, next) => {
-  console.log("here is the user");
   console.log(req.user);
   Product.find()
   .then(products => {
@@ -57,6 +56,7 @@ exports.getCart = (req, res, next) => {
 };
 
 exports.postCart = (req, res, next) => {
+  console.log("starting the cart post");
   const prodId = req.body.productId;
   Product.findById(prodId)
     .then(product => {
@@ -104,7 +104,7 @@ exports.postOrder = (req, res, next) => {
       });
       const order = new Order({
         user: {
-          name: req.user.name,
+          email: req.user.email,
           userId: req.user
         },
         products: products

@@ -18,7 +18,7 @@ exports.postAddProduct = (req, res, next) => {
     price:price,
     imageUrl:imageUrl,
     description:description,
-    userId:req.user
+    userId:req.session.user
   });
   product.save()
     .then(() => {
@@ -64,7 +64,7 @@ exports.postEditProduct = (req, res, next) => {
     })
     .then( () => {
       console.log("Updated Product");
-      res.redirect('../admin/products');
+      res.redirect('/e-commerce/admin/products');
     });
 
  
@@ -76,7 +76,7 @@ exports.getProducts = (req, res, next) => {
     res.render('admin/products', {
       prods: products,
       pageTitle: 'Admin Products',
-      path: '../admin/products'
+      path: '/admin/products'
     });
   });
 };
@@ -86,7 +86,7 @@ exports.postDeleteProduct = (req, res, next) => {
   Product.findByIdAndRemove(prodId)
     .then( () => {
       console.log("Product removed!")
-      res.redirect('../admin/products');
+      res.redirect('/e-commerce/admin/products');
     })
     .catch( error => {
       console.log(error);
