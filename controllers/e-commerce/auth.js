@@ -66,6 +66,7 @@ exports.postLogin = (req, res, next) => {
             });
             
           } else {
+            req.flash("error", "Invalid email or password");
             res.redirect("/e-commerce/login");
           }
         })
