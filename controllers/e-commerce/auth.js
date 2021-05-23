@@ -1,12 +1,17 @@
 const bcrypt = require("bcryptjs");
 const nodemailer = require("nodemailer");
 const sendgridTransport = require("nodemailer-sendgrid-transport");
+const ejs = require("ejs");
+
+const path = require('path');
+
+
 
 const User = require("../../models/e-comerce/user");
 
 const transporter = nodemailer.createTransport(sendgridTransport({
   auth: {
-    api_key: "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",
+    api_key: "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",
   }
 }))
 
@@ -19,7 +24,8 @@ exports.getLogin = (req, res, next) => {
     path: '/login',
     pageTitle: 'Login',
     errorMessage: errorMessage
-  });
+  })
+
 }
 
 exports.getSignup = (req, res, next) => {
@@ -77,6 +83,7 @@ exports.postLogin = (req, res, next) => {
 exports.postSignup = (req, res, next) => {
   const email = req.body.email;
   const password = req.body.password;
+  const name = req.body.name;
   const confirmPassword = req.body.confirmPassword;
 
   User.findOne({email:email})
@@ -90,19 +97,29 @@ exports.postSignup = (req, res, next) => {
         .then( hashedPassword => {
           const newUser = new User({
             email:email,
+            name: name,
             password:hashedPassword,
             cart:{items:[]}
           });
     
           return newUser.save();
         })
-        .then( () => {
+        .then( async () => {
           res.redirect("/e-commerce/login");
+          const p = path.join(
+            path.dirname(process.mainModule.filename),
+            'views',
+            'signUpEmail.ejs'
+          );
+
+          const emailContent = await ejs.renderFile(p, {name: name});
+          console.log(emailContent);
+            
           transporter.sendMail({
             to:email,
             from:"hernan.yupanqui.prieto@gmail.com",
             subject:"Sign up sucessfull",
-            html: "<h1>Congratulations, you sign up sucessfully</h1>"
+            html: emailContent
           });
         })
         .catch( error => console.log(error));
