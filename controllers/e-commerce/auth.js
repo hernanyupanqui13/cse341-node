@@ -11,7 +11,7 @@ const User = require("../../models/e-comerce/user");
 
 const transporter = nodemailer.createTransport(sendgridTransport({
   auth: {
-    api_key: "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",
+    api_key: "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",
   }
 }))
 
@@ -118,7 +118,7 @@ exports.postSignup = (req, res, next) => {
             
           transporter.sendMail({
             to:email,
-            from:"hernan.yupanqui.prieto@gmail.com",
+            from:"raymondtyupri@hotmail.com",
             subject:"Sign up sucessfull",
             html: emailContent
           });
