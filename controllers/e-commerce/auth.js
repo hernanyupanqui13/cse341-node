@@ -203,7 +203,6 @@ exports.postLogout = (req, res, next) => {
 
 
 exports.getReset = (req, res, next) => {
-  throw new Error("hLEP SA");
 
   let message = req.flash('error');
   if (message.length > 0) {

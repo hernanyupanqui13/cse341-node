@@ -83,7 +83,7 @@ textarea {
 }
 
 
-ul {
+ul.list-apps {
     list-style: none;
     padding: 0px;
     display: flex;
@@ -94,7 +94,7 @@ ul {
     align-items: center;
 }
 
-ul p {
+ul.list-apps p {
     margin: 0px;
     background-color: white;
     border-radius: 0px 0px 8px 8px;
@@ -102,7 +102,7 @@ ul p {
     padding: 8px;
 }
 
-ul strong {
+ul.list-apps strong {
     border-radius: 8px 8px 0px 0px;
     color: white;
     padding-left: 8px;
@@ -113,22 +113,22 @@ ul strong {
     font-family: Bitter, serif;
 }
 
-ul li:nth-child(5n+1) strong {
+ul.list-apps li:nth-child(5n+1) strong {
     background-color: #F8333C;
 }
-ul li:nth-child(5n+2) strong {
+ul.list-apps li:nth-child(5n+2) strong {
     background-color: #FCAB10;
 }
 
-ul li:nth-child(5n+3) strong {
+ul.list-apps li:nth-child(5n+3) strong {
     background-color: #2B9EB3;
 }
 
-ul li:nth-child(5n+4) strong {
+ul.list-apps li:nth-child(5n+4) strong {
     background-color: #44AF69;
 }
 
-ul li:nth-child(5n+5) strong {
+ul.list-apps li:nth-child(5n+5) strong {
     background-color: #9E7153;
 }
 
@@ -137,7 +137,7 @@ ul li:nth-child(5n+5) strong {
 
 
 
-ul li {
+.list-apps li {
     margin: 7px;
     width: 300px;
 }
@@ -182,3 +182,4 @@ a {
     display: block;
     color: black;
 }
+

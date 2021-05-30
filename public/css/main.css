@@ -32,7 +32,7 @@ form {
 .main-header {
   width: 100%;
   height: 3.5rem;
-  background-color: #2B9EB3;
+  background-color: #6695C1;
   padding: 0 1.5rem;
   display: flex;
   align-items: center;
@@ -263,3 +263,13 @@ form {
   cursor: pointer;
 }
 
+
+.jumbotron  {
+  padding: 10px;
+  background-image: url(https://i.pinimg.com/originals/ea/80/e8/ea80e8bcf70c0a180cdc6905afb3f1c1.jpg);
+}
+
+
+.right-nav {
+  list-style: none;
+}

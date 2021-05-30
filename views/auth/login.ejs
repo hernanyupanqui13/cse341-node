@@ -1,40 +1,41 @@
 <%- include('../includes/e-commerce/head.ejs') %>
-    <link rel="stylesheet" href="/css/forms.css">
-    <link rel="stylesheet" href="/css/auth.css">
+  <link rel="stylesheet" href="/css/forms.css">
+  <link rel="stylesheet" href="/css/auth.css">
 </head>
 
 <body>
    <%- include('../includes/e-commerce/navigation.ejs') %>
 
-    <main>
-        <% if (errorMessage) { %>
-            <div class="user-message user-message--error"><%= errorMessage %></div>
-        <% } %>
-        <form class="login-form" action="/e-commerce/login" method="POST">
-            <div class="form-control">
-                <label for="email">E-Mail</label>
-                <input 
-                  class="<%= validationErrors.find(e => e.param === 'email') ? 'invalid' : '' %> login-input"
-                  type="email" 
-                  name="email" 
-                  id="email" 
-                  value="<%= oldInput.email %>"
-                  required
-                >
-            </div>
-            <div class="form-control">
-                <label for="password">Password</label>
-                <input 
-                  class="<%= validationErrors.find(e => e.param === 'password') ? 'invalid' : '' %> login-input"
-                  type="password" 
-                  name="password" 
-                  id="password" 
-                  value="<%= oldInput.password %>"
-                  required
-                >
-            </div>
-            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-            <button class="btn" type="submit">Login</button>
-        </form>
-    </main>
+  <main>
+    <% if (errorMessage) { %>
+      <div class="user-message user-message--error"><%= errorMessage %></div>
+    <% } %>
+    <form class="login-form" action="/e-commerce/login" method="POST">
+      <div class="form-control">
+        <label for="email" class="form-label">E-Mail</label>
+        <input 
+          class="<%= validationErrors.find(e => e.param === 'email') ? 'invalid' : '' %> login-input form-control"
+          type="email" 
+          name="email" 
+          id="email" 
+          value="<%= oldInput.email %>"
+          required
+        >
+      </div>
+      <div class="form-control">
+        <label for="password">Password</label>
+        <input 
+          class="<%= validationErrors.find(e => e.param === 'password') ? 'invalid' : '' %> login-input form-control"
+          type="password" 
+          name="password" 
+          id="password" 
+          value="<%= oldInput.password %>"
+          required
+        >
+      </div>
+      <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+      <button class="btn btn-primary" type="submit">Login</button>
+      <a href="/e-commerce/reset" class="btn btn-secondary">Reset Password</a>
+    </form>
+  </main>
 <%- include('../includes/e-commerce/end.ejs') %>
