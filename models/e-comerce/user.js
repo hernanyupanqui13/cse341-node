@@ -11,6 +11,8 @@ const User = new Schema({
         type:String,
         required:true
     },
+    resetToken: String,
+    resetTokenExpiration: Date,
     name: {
       type: String,
       required: true

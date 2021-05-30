@@ -4,11 +4,11 @@ const Order = require("../../models/e-comerce/order");
 
 
 exports.getProducts = (req, res, next) => {
-  Product.find()
+  Product.find({userId: req.user._id})
   .then(products => {
     res.render('shop/product-list', {
       prods: products,
-      pageTitle: 'All Products',
+      pageTitle: 'Admin Products',
       path: '/products'
     });
   });
