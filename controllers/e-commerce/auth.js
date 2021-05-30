@@ -122,8 +122,11 @@ exports.postLogin = (req, res, next) => {
         });
           
     })
-    .catch(err => console.log(err));
-
+    .catch(err => {
+      const error = new Error(err);
+      error.httpStatusCode = 500;
+      return next(error);
+    });
 };
 
 
@@ -181,9 +184,12 @@ exports.postSignup = (req, res, next) => {
         html: emailContent
       });
     })
-    .catch(error => console.log(error)
-  );
-}
+    .catch(err => {
+      const error = new Error(err);
+      error.httpStatusCode = 500;
+      return next(error);
+    });
+  }
 
 exports.postLogout = (req, res, next) => {
   console.log("loging out");
@@ -197,6 +203,8 @@ exports.postLogout = (req, res, next) => {
 
 
 exports.getReset = (req, res, next) => {
+  throw new Error("hLEP SA");
+
   let message = req.flash('error');
   if (message.length > 0) {
     message = message[0];
@@ -244,8 +252,10 @@ exports.postReset = (req, res, next) => {
           `
         });
       })
-      .catch( err => {
-        console.log(err);
+      .catch(err => {
+        const error = new Error(err);
+        error.httpStatusCode = 500;
+        return next(error);
       });
   });
 };
@@ -270,7 +280,9 @@ exports.getNewPassword = (req, res, next) => {
       });
     })
     .catch(err => {
-      console.log(err);
+      const error = new Error(err);
+      error.httpStatusCode = 500;
+      return next(error);
     });
 };
 
@@ -299,7 +311,9 @@ exports.postNewPassword = (req, res, next) => {
     .then(() => {
       res.redirect('/e-commerce/login');
     })
-    .catch(error => {
-      console.log(error);
+    .catch(err => {
+      const error = new Error(err);
+      error.httpStatusCode = 500;
+      return next(error);
     });
 }

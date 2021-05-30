@@ -47,8 +47,17 @@ app.use(csrfProtection);
 app.use(flash());
 app.use("/", routes);
 
-
+app.get('/500', errorController.get500);
 app.use(errorController.get404);
+
+app.use((error, req, res, next) => {
+
+  res.status(500).render('500', {
+    title: 'Error!',
+    path: '/500',
+    isAuthenticated: req.session.isLoggedIn
+  });
+});
 
 
 const cors = require('cors') // Place this with other requires (like 'path' and 'express')

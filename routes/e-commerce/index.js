@@ -10,17 +10,21 @@ const admin = require("./admin");
 const shop = require("./shop");
 const auth = require("./auth");
 
-routes.use("/", (req, res, next) => {
+routes.use((req, res, next) => {
   if (!req.session.user) {
     return next();
   }
   User.findById(req.session.user._id)
     .then(user => {
+      if (!user) {
+        return next();
+      }
       req.user = user;
       next();
     })
-    .catch(err => console.log(err));
-
+    .catch(err => {
+      next(new Error(err));
+    });
 });
 
 routes.use((req, res, next) => {
