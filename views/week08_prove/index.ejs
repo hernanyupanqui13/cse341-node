@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title><%= pageTitle %></title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+</head>
+
+<body>
+  <div class="jumbotron text-center">
+    <div class="container">
+      <h1>Products</h1>
+      <p>Look all the products we have</p>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <% for(let i = 0; i < data.length; i++) { %> 
+        <div class="card m-2" style="width: 18rem;">
+          <img class="card-img-top" src="<%= data[i].imageUrl %> " alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title"><%= data[i].name %> </h5>
+            <p class="card-text"><%= data[i].description %> </p>
+  
+            <h6>$ <%= data[i].price %> </h6>
+  
+            <% for(let item of data[i].tags) { %> 
+            <span class="badge bg-success"><%= item %></span>
+            <% } %> 
+          </div>
+        </div>
+      <% } %> 
+    </div>
+  </div>
+  
+
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+      <li class="page-item">
+        <a class="page-link" href="?page=1" tabindex="-1">First</a>
+      </li>
+      <li class="page-item <%= hasPrevious ? '' : 'disabled' %>">
+        <a class="page-link" href="?page=<%= parseInt(currentPage) - 1 %> " tabindex="-1">Previous</a>
+      </li>
+
+      <% 
+      
+      
+      for(let i=firstInPagination; i < lastInPagination; i++) { %> 
+        <li class="page-item <%= i==currentPage ? 'active': '' %>"><a class="page-link" href="?page=<%= i %>"><%= i %></a></li>
+      <% } %> 
+      
+      <li class="page-item <%= hasNext ? '' : 'disabled' %>">
+        <a class="page-link" href="?page=<%= parseInt(currentPage) + 1 %>">Next</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="?page=<%= totalPages %>" tabindex="-1">Last</a>
+      </li>
+    </ul>
+  </nav>
+
+  <script src="/js/main.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+  
+  
+</body>
+
+</html>
