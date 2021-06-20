@@ -4,12 +4,17 @@ const routes = require("express").Router();
 const booksInfo = require("./bookinfo/bookinfo");
 const eCommerce = require("./e-commerce/");
 const week08 = require("./week08_prove/index");
+const week09 = require("./week09_prove/index");
+
 
 routes.use("/bookinfo", booksInfo);
 
 routes.use("/e-commerce", eCommerce);
 
 routes.use("/week08", week08);
+
+routes.use("/week09", week09);
+
 
 routes.get("/", (req, res, next) => {
   res.render("home", {title: "Web Site - Home "})
