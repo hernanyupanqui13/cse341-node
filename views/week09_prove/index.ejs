@@ -27,13 +27,18 @@
   
   
   <nav aria-label="Pagination">
-    <ul class="pagination justify-content-center m-4">
+    <ul class="pagination justify-content-center m-4 pagination-ul">
+      <li class="page-item">
+        <a class="page-link" href="#" tabindex="-1" id="firstButton" aria-disabled="true">First</a>
+      </li>
       <li class="page-item">
         <a class="page-link" href="#" tabindex="-1" id="previousButton" aria-disabled="true">Previous</a>
       </li>
-      
-      <li class="page-item">
+      <li class="page-item beforeInjecting">
         <a class="page-link" href="#" id="nextButton">Next</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="#" tabindex="-1" id="lastButton" aria-disabled="true">Last</a>
       </li>
     </ul>
   </nav>
