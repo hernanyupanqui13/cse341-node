@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title><%= pageTitle %></title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="/css/week09_prove/styles.css" />
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</head>
+<body>
+<div class="container-fluid">
+  <h1>The Great Avengers!</h1>
+  <ul id="nameList" class="">
+  </ul>
+  <h2 class="h3">Add a Name:</h2>
+  <div class="form-group">
+    <label for="avgName">Avenger Name</label>
+    <input type="text" class="form-control" id="avgName" name="avgName" aria-describedby="emailHelp" placeholder="Enter the name">
+  </div>
+  <div class="form-group">
+    <label for="avgPower">Avenger Power</label>
+    <input type="text" class="form-control" id="avgPower" name="avgPower" aria-describedby="emailHelp" placeholder="Enter the power">
+  </div>
+  <button id="submitName" class="btn btn-primary mt-2">Submit</button>
+
+  <div class="row">
+
+  </div>
+  <h2 class="h3 mt-5 col-12">Getting all the current names</h2>
+  <div class="col-12">
+    <button id="fetchAllBtn" class="btn btn-primary">Fetch all</button>
+  </div>
+  
+  <ul id="" class="list-group col-12 col-md-8 mt-4">
+  
+    <h3 class="h5">List of Avengers: </h3>
+  <div class="accordion accordion-flush" id="avengersList">
+  </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+
+<script src="/js/week10_script.js"></script>
+</body>
+</html>

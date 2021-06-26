@@ -32,6 +32,7 @@ app.set("views", "views");
 
 
 app.use(bodyParser.urlencoded({extended: false}));
+app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(
@@ -43,7 +44,7 @@ app.use(
   })
 );
 
-app.use(csrfProtection);
+//app.use(csrfProtection);
 app.use(flash());
 app.use("/", routes);
 
@@ -51,7 +52,7 @@ app.get('/500', errorController.get500);
 app.use(errorController.get404);
 
 app.use((error, req, res, next) => {
-  console.log("soy error de agia ");
+  console.log(error, "soy error de agia ");
   res.status(500).render('500', {
     title: 'Error!',
     path: '/500',
