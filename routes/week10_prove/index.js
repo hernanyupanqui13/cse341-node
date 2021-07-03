@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const fs = require("fs");
 const path = require("path");
+const io = require("../../socket");
 
 // Path to your JSON file, although it can be hardcoded in this file.
 const dummyData = require('../../data/week10_prove_data.json');
@@ -40,7 +41,13 @@ router.post('/insert', (req, res, next) => {
       msg: "success"
     });
 
+    io.getIO().emit("insert",{
+      dummyData
+    });
+
   });
+
+  
   
 
   console.log(dummyData);

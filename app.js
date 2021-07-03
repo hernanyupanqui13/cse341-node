@@ -8,7 +8,6 @@ const csrf = require("csurf");
 const flash = require("connect-flash");
 
 
-
 const routes = require("./routes/index");
 
 
@@ -31,7 +30,7 @@ app.set("views", "views");
 
 
 
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -84,7 +83,12 @@ mongoose
     MONGODB_URL, options
   )
   .then( () => {
-    app.listen(portListening, () => console.log("Starting on port: ", portListening));
+    const theServer = app.listen(portListening, () => console.log("Starting on port: ", portListening));
+    const io = require("./socket").init(theServer);
+    io.on("connection", socket => {
+      console.log("Client connected");
+    })
+
   })
   .catch(err => {
     console.log(err);
